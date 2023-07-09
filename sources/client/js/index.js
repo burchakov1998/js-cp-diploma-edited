@@ -27,7 +27,7 @@ getRequest(Request,(Response)=>{
     object.halls = Response.halls.result;
     object.halls = object.halls.filter(hall => hall.hall_open == 1);
     let main = document.querySelector('main');
-    object.films.array.forEach(film => {
+    object.films.forEach(film => {
         let seancesHTML = '';
         let filmId = film.film_id;
         
@@ -48,9 +48,14 @@ getRequest(Request,(Response)=>{
                  data-price-standart ='${hall.hall_price_standart}' 
                  data-seance-id='${seances.seance_id}'
                  date-seance-start = '${seances.seance_start}'
+data-seance-time='${seances.seance_time}'>
+${seances.seance_time}
+<a/>
+</li> `)
+seancesHTML+=`
+</ul>
+</div>`
 
-                 `)
-            
                 }
         })
     });
