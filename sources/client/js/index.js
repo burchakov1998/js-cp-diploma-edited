@@ -60,3 +60,23 @@ seancesHTML+=`
         })
     });
 })
+
+if(seancesHTML){
+    main.innerHTML +=`
+    <section class='movie'>
+        <div class= 'movie__info'>
+            <img class ='movie__poster-image' alt = '${film.film_name}' постер src='${film.film_poster}'>
+            </div>
+            <div class='movie_description'>
+            <h2 class=''movie_title>${film.film_name}</h2>
+            <p class='movie__synopsis'>${film.film_description}</p>
+            <p class= 'movie__data'>
+            <span class = 'movie__data-duraction'>${film.film_duraction}мин.</span>
+            <span class = 'movie_data-origin'>${film.film_origin}</span>
+            </p>
+            </div>
+                </div>
+                ${seancesHTML}
+                </section>
+    `
+}
