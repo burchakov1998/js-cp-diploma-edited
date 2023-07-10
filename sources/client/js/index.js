@@ -58,8 +58,7 @@ seancesHTML+=`
 
                 }
         })
-    });
-})
+
 
 if(seancesHTML){
     main.innerHTML +=`
@@ -80,3 +79,35 @@ if(seancesHTML){
                 </section>
     `
 }
+});
+
+let dayLinks = Array.from(document.querySelectorAll('.page-nav__day'));
+let movieSeances = Array.from(document.querySelectorAll('.movie-seances__time'))
+dayLinks.forEach(dayLink=>dayLink.addEventListener('click',(event)=>{
+    event.preventDefault();
+
+document.querySelector('.page-nav__day_chosen').classList.remove('page-nav__day_chosen');
+dayLink.classList.add('page-nav__day_chosen');
+let timeStampDay = Number(event.target.closest('.page-nav__day').dataset.timestamp)
+if(isNaN(timeStampDay)) {
+   timeStampDay = Number(event.target.closest('.page-nav__day').dataset.timestamp);
+}
+movieSeances.forEach(movieSeance =>{
+    let timeStampseanceDay = Number(movieSeance.dataset.seanceStart) * 60;
+    let timeStampSeance = timeStampDay + timeStampseanceDay;
+    let timestampNow = Math.trunc(+new Date()/1000);
+    movieSeance.dataset.seanceTimeStamp = timeStampSeance;
+    if((timeStampSeance - timestampNow)>0){
+        movieSeance.classList.remove('acceptin-button-disabled');
+    } else{
+        movieSeance.classList.add('acceptin-button-disabled');
+    }
+})
+}))
+dayLinks[0].click();
+movieSeances.forEach(movieSeances => movieSeances.addEventListener)('click', (event)=> {
+    let selectSeance = event.target.dataset;
+    selectSeance.hallConfig = object.halls.find(hall => hall.hall_id === selectSeance.hallId).hallConfig;
+    sessionStorage.setItem('selectSeance', JSON.stringify(selectSeance))
+})
+})
