@@ -2,12 +2,14 @@
 let selectSeance = JSON.parse(sessionStorage.selectSeance);
 let bodyRequest =
     // `event=get_hallConfig&timestamp=${selectSeance.seanceTimeStamp}&hallId=${selectSeance.hallId}&seanceId=${selectSeanse.seanceId}`;
-    `event=get_hallConfig&timestamp=${selectSeance.seanceTimeStamp}
-&hallId=${selectSeance.hallid}&seanceId=${selectSeance.seanceId}`;
+    `event=update_hall_config
+&timestamp=${selectSeance.seanceTime}
+&hallId=${selectSeance.hall_id}
+&seanceId=${selectSeance.seance_id}`;
 document.addEventListener('DOMContentLoaded', () => {
     let buttonAcceptin = document.querySelector('.acceptin-button');
     let buyinginfoTitle = document.querySelector('.buying__info-title');
-    let buyingInfoStart = document.querySelector('.buying__info-start');
+    let buyingInfoStart = document.querySelector('.buying__info_start');
     let buyingInfoHall = document.querySelector('.buying__info-hall');
     let priceStandart = document.querySelector('.price-standart');
     let confStepWrapper = document.querySelector('.conf-step__wrapper');
@@ -33,7 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
                 Event.target.classList.toggle('conf-step__chair_selected');
-                let chairSelected = Array.from(document.querySelectorAll('.conf-step__row.conf-step__chair_selected'));
+                let chairSelected =
+                 Array.from(document.querySelectorAll('.conf-step__row.conf-step__chair_selected'));
                 if (chairSelected.length > 0) {
                     buttonAcceptin.removeAttribute('disabled');
 
