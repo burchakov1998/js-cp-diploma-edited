@@ -1,4 +1,4 @@
-let selectSeance = JSON.parse(sessionStorage.selectSeance);
+let selectSeance = JSON.parse(localStorage.getItem('selectSeance'));
 let places ='';
 let price = 0;
 selectSeance.salesPlaces.array.forEach(salePlace => {
