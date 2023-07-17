@@ -1,5 +1,6 @@
-
-let selectSeance = JSON.parse(localStorage.getItem('selectSeance'));
+const selectSeanse = JSON.parse(localStorage.selectSeance);
+console.log(selectSeanse);
+// let selectSeance = JSON.parse(localStorage.selectSeance);
 // let bodyRequest = `event=get_hallConfig
 // &timestamp=${selectSeanse.seanceTimeStamp}
 // &hallId=${selectSeanse.hallId}
@@ -7,9 +8,9 @@ let selectSeance = JSON.parse(localStorage.getItem('selectSeance'));
 // ${selectSeanse.seanceId}`;
 
 let bodyRequest =`event=get_hallConfig
-&timestamp=${selectSeance.seanceTimeStamp}
-&hallId=${selectSeance.hallId}
-&seanceId=${selectSeance.seanceId}`;
+&timestamp=${selectSeanse.seanceTimeStamp}
+&hallId=${selectSeanse.hallId}
+&seanceId=${selectSeanse.seanceId}`;
 document.addEventListener('DOMContentLoaded', () => {
     let buttonAcceptin = document.querySelector('.acceptin-button');
     let buyinginfoTitle = document.querySelector('.buying__info-title');
@@ -18,17 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let priceStandart = document.querySelector('.price-standart');
     let confStepWrapper = document.querySelector('.conf-step__wrapper');
 
-     buyinginfoTitle.innerHTML = selectSeance.filmName;
-     buyingInfoStart.innerHTML = `Начало сеанса ${selectSeance.seanceTime}`;
-     buyingInfoHall.innerHTML = selectSeance.hallName;
-     priceStandart.innerHTML = selectSeance.priceStandart;
+     buyinginfoTitle.innerHTML = selectSeanse.filmName;
+     buyingInfoStart.innerHTML = `Начало сеанса ${selectSeanse.seanceTime}`;
+     buyingInfoHall.innerHTML = selectSeanse.hallName;
+     priceStandart.innerHTML = selectSeanse.priceStandart;
 
     getRequest(bodyRequest, (response) => {
         console.log(response)
         if (response) {
-            selectSeance.hallConfig = response;
+            selectSeanse.hallConfig = response;
         }
-        confStepWrapper.innerHTML = selectSeance.hallConfig;
+        confStepWrapper.innerHTML = selectSeanse.hallConfig;
         let chairs = Array.from(document.querySelectorAll
             ('.conf-step__row .conf-step__chair'));
         buttonAcceptin.setAttribute('disabled', true);
@@ -52,6 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 
+
+    
     buttonAcceptin.addEventListener('click', (Event) => {
         Event.preventDefault()
         let selectedPlaces = Array();
@@ -72,9 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
         let configurationHall = document.querySelector('.conf-step__wrapper').innerHTML;
-        selectSeance.hallConfig = configurationHall;
-        selectSeance.spanPlaces = selectedPlaces;
-        localStorage.setItem('selectSeance', JSON.stringify(selectSeance));
+        selectSeanse.hallConfig = configurationHall;
+        selectSeanse.spanPlaces = selectedPlaces;
+        localStorage.setItem('selectSeance', JSON.stringify(selectSeanse));
         window.location.href = 'payment.html'
     })
 })
