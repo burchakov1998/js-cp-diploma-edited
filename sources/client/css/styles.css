@@ -16,7 +16,11 @@ body {
   background-attachment: fixed;
   background-position: right;
 }
-
+@media(max-width: 320px) {
+  .movie .movie__info {
+    display: flex;
+    flex-direction: column;
+  }}
 .page-header {
   padding: 1.4rem;
 }
