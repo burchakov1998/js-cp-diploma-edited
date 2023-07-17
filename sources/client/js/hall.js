@@ -1,11 +1,5 @@
 
 let selectSeance = JSON.parse(localStorage.getItem('selectSeance'));
-// let bodyRequest = `event=get_hallConfig
-// &timestamp=${selectSeanse.seanceTimeStamp}
-// &hallId=${selectSeanse.hallId}
-// &seanceId=
-// ${selectSeanse.seanceId}`;
-
 let bodyRequest =`event=get_hallConfig
 &timestamp=${selectSeance.seanceTimeStamp}
 &hallId=${selectSeance.hallId}
@@ -59,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < rows.length; i++) {
             let spanPlaces = Array.from(rows[i].getElementsByClassName('conf-step__chair'))
             for (let j = 0; j < spanPlaces.length; j++) {
-                if(spanPlaces[n].classList.contains('conf-step__chair_selected')){
-                let typePlace = (spanPlaces[n].classList.contains('conf-step__chair_standart')) 
+                if(spanPlaces[j].classList.contains('conf-step__chair_selected')){
+                let typePlace = (spanPlaces[j].classList.contains('conf-step__chair_standart')) 
                 ? 'standart' : 'vip';
                 selectedPlaces.push({
                     'row': i + 1,
@@ -73,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
         let configurationHall = document.querySelector('.conf-step__wrapper').innerHTML;
         selectSeance.hallConfig = configurationHall;
-        selectSeance.spanPlaces = selectedPlaces;
-        localStorage.setItem('selectSeance', JSON.stringify(selectSeance));
+        selectSeance.salesPlaces = selectedPlaces;
+        localStorage.getItem('selectSeance', JSON.stringify(selectSeance));
         window.location.href = 'payment.html'
     })
 })
