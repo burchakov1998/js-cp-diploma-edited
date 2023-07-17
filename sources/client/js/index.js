@@ -110,9 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
             movieSeances.forEach(movieSeances => 
                 movieSeances.addEventListener('click', (event) => 
                 {
-                let selectSeance = event.target.dataset;
-                selectSeance.hallConfig = object.halls.find(hall => hall.hall_id == selectSeance.hallId).hall_сonfig;
-                localStorage.setItem('selectSeance', JSON.stringify(selectSeance))
+                    let selectSeanse = event.target.dataset;
+                    selectSeanse.hallConfig = obj.halls.find(hall => hall.hall_id == selectSeanse.hallId).hall_config;
+                      sessionStorage.setItem('selectSeanse', JSON.stringify(selectSeanse));
+                      console.log(selectSeanse);
+                // let selectSeance = event.target.dataset;
+                // selectSeance.hallConfig = object.halls.find(hall => hall.hall_id == selectSeance.hallId).hall_сonfig;
+                // localStorage.setItem('selectSeance', JSON.stringify(selectSeance))
             }))
         })
 })
