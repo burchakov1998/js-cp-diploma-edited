@@ -107,16 +107,19 @@ body {
 }
 .movie .movie__poster {
   position: relative;
-  width: 12.5rem;
-  height: 17.5rem;
+  margin-right: 10px;
+ 
   /*    left: 1.5rem;
       top: -1.5rem;*/
 }
 .movie .movie__poster .movie__poster-image {
   position: relative;
-  top: -3rem;
-  width: 12.5rem;
-  height: 17.5rem;
+  /* max-width: 320px; */
+  align-items: stretch;
+  /* max-height:  50%; */
+  top: 0;
+   width: 12.5rem; 
+  /* height: 17.5rem; */
 }
 .movie .movie__poster::after {
   content: '';
@@ -131,7 +134,8 @@ body {
 }
 .movie .movie__description {
   flex-grow: 1;
-  padding-left: 1.5rem;
+
+  /* padding-left: 1.5rem; */
 }
 .movie .movie__title {
   font-weight: 700;
